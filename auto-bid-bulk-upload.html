@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>대량 키워드 입찰 업로드 - Admin System</title>
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/auto-bid-bulk-upload.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     
+</head>
+
+<body>
+    <!-- GNB -->
+    <header class="gnb">
+        <div class="gnb-inner">
+            <h1 class="logo">Admin System</h1>
+            <div class="advertiser-select">
+                <select class="select" id="advertiserDropdown"></select>
+            </div>
+            <div class="user-area">
+                <span id="userName">로딩중...</span>
+                <button class="btn btn-sm btn-outline" id="logoutBtn">로그아웃</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <button class="sidebar-toggle" title="사이드바 접기/펼치기">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <nav class="side-nav">
+                <ul>
+                    <li class="nav-category">
+                        <a href="#" class="category-title">
+                            <i class="fas fa-user-cog menu-icon"></i>
+                            <span>사용자 설정</span>
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="#">사용자 등록/수정</a></li>
+                            <li><a href="#">팀 등록/수정</a></li>
+                            <li><a href="#">팀 user 등록</a></li>
+                            <li><a href="#">광고주 등록</a></li>
+                            <li><a href="#">API 연동</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-category">
+                        <a href="#" class="category-title">
+                            <i class="fas fa-shield-alt menu-icon"></i>
+                            <span>부정클릭 모니터링</span>
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="#">부정클릭 모니터링</a></li>
+                            <li><a href="#">부정클릭 모니터링 설정</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-category">
+                        <a href="#" class="category-title">
+                            <i class="fas fa-search menu-icon"></i>
+                            <span>검색광고 모니터링</span>
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="#">키워드 광고 모니터링</a></li>
+                            <li><a href="#">브랜드 광고 모니터링</a></li>
+                            <li><a href="#">모니터링 설정</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-category">
+                        <a href="#" class="category-title">
+                            <i class="fas fa-chart-bar menu-icon"></i>
+                            <span>통합 광고 리포트 시스템</span>
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="#">리포트 설정</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-category open">
+                        <a href="#" class="category-title">
+                            <i class="fas fa-cogs menu-icon"></i>
+                            <span>광고 운영 시스템</span>
+                            <i class="fas fa-chevron-down arrow-icon"></i>
+                        </a>
+                        <ul class="sub-menu">
+                            <li><a href="#">자동입찰 시스템 관리</a></li>
+                            <li><a href="auto-bid-status.html">자동입찰 시스템 설정</a></li>
+                            <li><a href="#" class="active">대량 키워드 입찰 업로드</a></li>
+                            <li><a href="#">리포트 설정</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#" class="single-menu"><i class="fas fa-chart-line menu-icon"></i><span>단독 메뉴</span></a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <!-- Content Header -->
+            <div class="content-header">
+                <h2 class="content-title">대량 키워드 입찰 업로드</h2>
+                <div class="breadcrumb">
+                    <a href="#">홈</a>
+                    <span>/</span>
+                    <span>광고 운영 시스템</span>
+                    <span>/</span>
+                    <span>대량 키워드 입찰 업로드</span>
+                </div>
+            </div>
+
+            <div class="content-area">
+                <!-- 페이지 헤더 -->
+                <div class="page-header">
+                    <div>
+                        <h2>대량 키워드 입찰 업로드</h2>
+                        <p class="page-description">엑셀 파일을 통해 대량의 키워드 입찰을 등록/수정/삭제할 수 있습니다</p>
+                    </div>
+                </div>
+
+                <!-- 카드 1: 대량등록/수정/삭제/사용여부 업로드 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>대량등록 / 수정 / 삭제 / 사용여부 업로드</h3>
+                        <div class="template-buttons">
+                            <button type="button" class="btn btn-outline btn-sm" id="downloadRegisterTemplate">
+                                <i class="fas fa-download"></i> 대량등록 템플릿 다운로드
+                            </button>
+                            <button type="button" class="btn btn-outline btn-sm" id="downloadModifyTemplate">
+                                <i class="fas fa-download"></i> 대량수정 템플릿 다운로드
+                            </button>
+                            <button type="button" class="btn btn-outline btn-sm" id="downloadDeleteTemplate">
+                                <i class="fas fa-download"></i> 대량삭제 템플릿 다운로드
+                            </button>
+                            <button type="button" class="btn btn-outline btn-sm" id="downloadStatusTemplate">
+                                <i class="fas fa-download"></i> 대량 사용여부 템플릿 다운로드
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="upload-form-section">
+                            <!-- 자동입찰 구분 -->
+                            <div class="form-group-inline">
+                                <label class="form-label">자동입찰 구분 <span class="required">*</span></label>
+                                <div class="radio-group-horizontal">
+                                    <label class="radio-label">
+                                        <input type="radio" name="bidType" value="powerlink" checked>
+                                        <span>파워링크</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="bidType" value="shopping">
+                                        <span>쇼핑검색</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 작업구분 -->
+                            <div class="form-group-inline">
+                                <label class="form-label">작업구분 <span class="required">*</span></label>
+                                <div class="radio-group-horizontal">
+                                    <label class="radio-label">
+                                        <input type="radio" name="workType" value="register" checked>
+                                        <span>등록</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="workType" value="modify">
+                                        <span>수정</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="workType" value="delete">
+                                        <span>삭제</span>
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="workType" value="status">
+                                        <span>사용여부</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 작업명 -->
+                            <div class="form-group-inline">
+                                <label class="form-label">작업명 <span class="required">*</span></label>
+                                <input type="text" class="input" id="workName" placeholder="작업명을 입력하세요">
+                            </div>
+
+                            <!-- 파일 업로드 -->
+                            <div class="form-group-inline">
+                                <label class="form-label">파일 업로드 <span class="required">*</span></label>
+                                <div class="file-upload-area" id="fileUploadArea">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <div>
+                                        <p>클릭 또는 드래그하여 업로드</p>
+                                        <p>지원 형식: .xlsx, .xls</p>
+                                    </div>
+                                    <input type="file" id="fileInput" accept=".xlsx,.xls">
+                                    <div class="file-name" id="fileName" style="display: none;"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 업로드 버튼 -->
+                        <div class="upload-actions">
+                            <button type="button" class="btn btn-primary" id="uploadBtn">
+                                <i class="fas fa-upload"></i> 업로드
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 카드 2: 대량등록/수정/삭제/사용여부 이력 -->
+                <div class="card">
+                    <div class="card-header">
+                        <h3>대량등록 / 수정 / 삭제 / 사용여부 이력</h3>
+                        <div class="card-header-actions">
+                            <span class="text-muted">총 <strong id="totalCount">0</strong>건</span>
+                            <button type="button" class="btn btn-sm btn-outline" id="refreshHistoryBtn">
+                                <i class="fas fa-sync-alt"></i> 새로고침
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-sortable" id="historyTable">
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" data-sort="account_id">광고계정 ID <i class="fas fa-sort"></i></th>
+                                        <th class="sortable" data-sort="work_name">작업명 <i class="fas fa-sort"></i></th>
+                                        <th class="sortable" data-sort="ad_type">광고타입 <i class="fas fa-sort"></i></th>
+                                        <th class="sortable" data-sort="work_type">작업구분 <i class="fas fa-sort"></i></th>
+                                        <th class="sortable" data-sort="result">작업결과 <i class="fas fa-sort"></i></th>
+                                        <th class="sortable" data-sort="register_user">등록자 <i class="fas fa-sort"></i></th>
+                                        <th class="sortable" data-sort="request_time">요청시간 <i class="fas fa-sort"></i></th>
+                                        <th>요청파일</th>
+                                        <th>결과파일</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="historyTableBody">
+                                    <tr>
+                                        <td colspan="9" class="text-center text-muted">
+                                            데이터를 불러오는 중...
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- 빈 상태 -->
+                        <div class="empty-state" id="emptyState" style="display: none;">
+                            <div class="empty-state-icon">📋</div>
+                            <div class="empty-state-text">업로드 이력이 없습니다</div>
+                        </div>
+
+                        <!-- 페이지네이션 -->
+                        <div class="pagination" id="pagination" style="display: none;">
+                            <button class="pagination-btn" disabled>이전</button>
+                            <button class="pagination-btn active">1</button>
+                            <button class="pagination-btn">다음</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/auto-bid-bulk-upload-ui.js"></script>
+</body>
+</html>
