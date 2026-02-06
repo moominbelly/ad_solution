@@ -24,8 +24,9 @@ create ad solution pages
 ### 아이콘
 - Font Awesome 6.5.1 (무료 버전)
 - CDN: `https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css`
+```
 
----
+
 ## 프로젝트 구성 
 
 project/
