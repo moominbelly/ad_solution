@@ -1,6 +1,6 @@
 # ad_solution
 create ad solution pages 
-## 🎨 디자인 시스템
+## 디자인 시스템
 
 ### 컬러 팔레트
 ```css
@@ -26,6 +26,8 @@ create ad solution pages
 - CDN: `https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css`
 
 ---
+## 프로젝트 구성 
+
 project/
 ├── html/
 │   └── auto-bid-bulk-upload.html       # 자동입찰 대량 등록 
