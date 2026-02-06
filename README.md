@@ -28,7 +28,7 @@ create ad solution pages
 
 
 ## 프로젝트 구성 
-
+```
 project/
 ├── html/
 │   └── auto-bid-bulk-upload.html       # 자동입찰 대량 등록 
@@ -44,3 +44,4 @@ project/
 │   └── auto-bid-bulk-upload-ui.js     # 자동입찰 대량등록 ui 
 │
 └── README.md                           # 현재 파일 
+```
